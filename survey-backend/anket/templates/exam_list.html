@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for exam in exams %}
+        <a class="text-decoration-none" href="#">
+            <strong class="text-danger">{{ exam.title }}</strong>
+            <strong class="text-danger">{{ exam.slug }}</strong>
+        </a>
+    {% empty %}
+    	<div class="alert alert-info">Henüz Bir Sınav yok</div>
+    {% endfor %}
+
+{% endblock %}

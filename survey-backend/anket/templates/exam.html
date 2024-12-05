@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+    .metric {
+    width: 150px!important;
+    height: 150px!important;
+}
+</style>
+<section class="container">
+
+
+<script>
+
+    $(function() {
+        $(".knob").knob();
+    });
+</script>
+
+{#<div class="position-relative">#}
+{#    <input class="knob" data-width="100" data-height="100" value="50" data-min="0" data-displayprevious="true" data-angleOffset=-90>#}
+{##}
+{#</div>#}
+
+<div class="border p-4 rounded">
+    <strong class="d-block">TIP-1</strong>
+    <strong>{{ exam.title }}</strong>
+    <hr>
+    <ul class="list-unstyled">
+    {% for question in exam.get_questions %}
+        <li class="list-group-item">
+            <strong>{{ forloop.counter }}.</strong>
+            {{ question.text }}
+        </li>
+        <li class="position-relative pt-2">
+{#            <input type="range" class="w-50">#}
+
+            <input name="answer_{{ question.id }}" class="knob" data-width="100" data-height="100" value="50" data-min="0" data-displayprevious="true" data-angleOffset=-90>
+        </li>
+    {% endfor %}
+    </ul>
+    <hr>
+    <button class="btn btn-primary fw-bold" type="submit">Gönder</button>
+</div>
+
+</section>
+{#    <script>draw_knobs()</script>#}
+{% endblock %}

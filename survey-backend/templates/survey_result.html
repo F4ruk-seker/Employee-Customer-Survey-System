@@ -1,0 +1,29 @@
+<div style="border:1px solid darkgray;border-radius:0.2rem;padding: .5rem;">
+    <h4>
+        <strong>Anket ismi: {{ exam.title }}</strong>
+    </h4>
+    <hr>
+    Prototip Anket Sonucunuz :
+    <ul style="list-style: none">
+        {% for answer_question in answer_question_list %}
+            <li>
+                <strong>Soru: </strong>
+                {{ answer_question.question.text }}
+            </li>
+        <li>
+            <strong>Yanıtınız: </strong>
+            {% if answer_question.answer.value <= 40 %}
+                <span style="color: red">{{ answer_question.answer.value }}</span>
+            {% elif answer_question.answer.value <= 80 %}
+                <span style="color: green">{{ answer_question.answer.value }}</span>
+            {% else %}
+                <span style="color: darkcyan">{{ answer_question.answer.value }}</span>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <p>
+        Katılım tarihi {{ created }}
+    </p>
+</div>
